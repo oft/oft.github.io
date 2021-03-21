@@ -1,5 +1,5 @@
 {
-    "name": "Minimal app to try PWA",
+    "name": "Minimal app to try PWA.",
     "short_name": "Minimal PWA",
     "display": "standalone",
     "start_url": "/",

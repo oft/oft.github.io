@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>oft</title>
-  <link rel="manifest" href="manifest.json">~
+  <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--script type="systemjs-importmap">
     {
@@ -28,6 +28,14 @@
     System.import('./index.js').then(fn=>{
         fn.default()
     });
+  </script>
+  <script>
+    if (navigator.serviceWorker != null) {
+      navigator.serviceWorker.register('sw.js')
+      .then(function(registration) {
+        console.log('Registered events at scope: ', registration.scope);
+      });
+    }
   </script>
 </body>
 </html>
