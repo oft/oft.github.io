@@ -1,0 +1,11 @@
+{
+  "name": "oft.github.io",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/oft/oft.github.io.git",
+  "author": "xczq <290353142@qq.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "cd-express": "^1.0.2"
+  }
+}
