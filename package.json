@@ -5,7 +5,20 @@
   "repository": "https://github.com/oft/oft.github.io.git",
   "author": "xczq <290353142@qq.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "babel-node build.js"
+  },
   "devDependencies": {
-    "cd-express": "^1.0.2"
-  }
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/node": "^7.13.12",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.12.13",
+    "art-template": "^4.13.2",
+    "cd-express": "^1.0.2",
+    "glob": "^7.1.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "dependencies": {}
 }
