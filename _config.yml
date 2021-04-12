@@ -8,5 +8,5 @@ exclude: [
   "snowpack.config.js"
 ]
 include: ["CNAME","_snowpack"]
-source: "src/build"
+source: "build"
 #destination: _site
