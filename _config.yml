@@ -1,3 +1,8 @@
+repository: oft/oft.github.io
+github_url: https://github.com/oft/oft.github.io
+url: https://zqzyz.com
+github: [metadata]
+
 exclude: [
   "snowpack.config.js"
 ]
