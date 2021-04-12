@@ -7,6 +7,6 @@ markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 exclude: [
   "snowpack.config.js"
 ]
-include: ["CNAME"]
+include: ["CNAME","_snowpack"]
 source: "src/build"
 #destination: _site
