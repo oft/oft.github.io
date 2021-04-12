@@ -10,3 +10,4 @@ exclude: [
 include: ["CNAME","_snowpack"]
 source: "src/build"
 #destination: _site
+theme: jekyll-theme-minimal
