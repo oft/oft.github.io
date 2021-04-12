@@ -1,0 +1,6 @@
+exclude: [
+  "snowpack.config.js"
+]
+include: ["CNAME"]
+source: "src/build"
+#destination: _site
