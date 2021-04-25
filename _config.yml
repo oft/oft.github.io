@@ -28,5 +28,15 @@ gems:
   - jekyll-avatar
   - jekyll-mentions
 
-host: 0.0.0.0
+# host: 0.0.0.0
+
+baseurl: 
+
+# 排除文件
 exclude: ["yarn.lock","package.json","CNAME","src"]
+
+# 源码目录 默认： 当前目录
+source: src
+
+# 源码目录 默认：./_site
+# destination 

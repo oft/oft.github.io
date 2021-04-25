@@ -1,0 +1,13 @@
+---
+layout: default
+title: 前端资源
+---
+
+
+<div class="list-group">
+    {% for link in site.data.link %}
+    <a href="{{link}}" class="list-group-item list-group-item-action" aria-current="true">
+        {{link}}
+    </a>
+    {% endfor %}
+</div>

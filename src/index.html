@@ -1,0 +1,94 @@
+---
+layout: platform
+title: 前端资源
+---
+<!--div class="row">
+    {% for post in site.posts %}
+
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p class="card-text">
+            <span class="date">{{ post.date | date_to_string }}</span> <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+          </p>
+          <a href="#" class="btn btn-primary">使用</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</div-->
+
+
+<main class="container">
+  <h5>常用地址</h5>
+  <p>
+  <div class="row">
+    {% for link in site.data.link %}
+    <div class="col-auto">
+      <a href="{{link}}" target="_blank" class="list-group-item list-group-item-action" aria-current="true">
+        {{ link }}
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</p>
+
+  <h5>在线工具</h5>
+  <p>
+  <div class="row">
+  {% for group in site.data.tool %}
+  <!--h5>{{group.title}}</h5-->
+    {% for link in group.children %}
+    <div class="col-auto">
+      <a href="{{link.url}}" target="_blank" class="list-group-item list-group-item-action" aria-current="true">
+        {{ link.title }}
+      </a>
+    </div>
+    {% endfor %}
+  {% endfor %}
+  </div>
+
+</p>
+  <!--table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+      </tr>
+    </tbody>
+  </table-->
+
+
+  <p>
+  <h3>Blogs</h3>
+  <div>
+      {% for post in site.posts %}
+      <a href="{{ site.baseurl }}{{ post.url }}" class="list-group-item list-group-item-action" aria-current="true">
+          {{ post.title }}
+      </a>
+      {% endfor %}
+  </div>
+  </p>
+</main>
