@@ -15,7 +15,7 @@
   children:
   - url: https://codesandbox.io
     title: codesandbox
-  - url: https://replit.io
+  - url: https://replit.com
     title: replit
 - title: 基于 relite.com 的工具
   children: 
