@@ -22,7 +22,7 @@ title: 前端资源
 
 <div class="list-group">
     {% for post in site.posts %}
-    <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+    <a href="{{ site.baseurl }}{{ post.url }}" class="list-group-item list-group-item-action" aria-current="true">
         {{ post.title }}
     </a>
     {% endfor %}
