@@ -6,6 +6,7 @@
   "author": "xczq <290353142@qq.com>",
   "license": "MIT",
   "scripts": {
+    "push":"git add . && git commit -m 'update' && git push",
     "start": "jeykll build"
   },
   "devDependencies": {
