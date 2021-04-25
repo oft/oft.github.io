@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "push":"git add . && git commit -m 'update' && git push",
-    "start": "jeykll build"
+    "start": "jekyll serve"
   },
   "devDependencies": {
   }
