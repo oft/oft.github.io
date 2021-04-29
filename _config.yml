@@ -33,10 +33,17 @@ gems:
 baseurl: 
 
 # 排除文件
-exclude: ["yarn.lock","package.json","CNAME","src"]
+exclude: [
+  "yarn.lock",
+  "package.json",
+  "CNAME",
+  "lib",
+  "packages",
+  "README.md"
+]
 
-# 源码目录 默认： 当前目录
-source: src
+# 源码目录 默认： 当前目录,github 不支持此配置
+# source: src
 
 # 源码目录 默认：./_site
 # destination 
