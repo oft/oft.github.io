@@ -42,6 +42,13 @@ exclude: [
   "README.md"
 ]
 
+include: [
+  "_snowpack",
+  "_commonjsHelpers"
+]
+
+
+
 # 源码目录 默认： 当前目录,github 不支持此配置
 # source: src
 
