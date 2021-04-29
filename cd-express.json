@@ -1,0 +1,11 @@
+//doc: https://configure-driver.github.io/cd-express/
+{
+    "port": 5000,
+    "static": {
+        "/": [
+            "./_site"
+        ]
+    },
+    "socket": "",
+    "$schema": "https://configure-driver.github.io/cd-express/schemas/cd-express.json"
+}
