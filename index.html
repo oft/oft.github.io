@@ -21,7 +21,9 @@ title: 前端资源
 
 
 <main class="container">
-  <h5>常用地址</h5>
+  <h5>常用地址 
+    <a class="button" target="_blank" href="https://github.com/oft/oft.github.io/edit/main/_data/link.yml">编辑</a>
+  <h5
   <p>
   <div class="row">
     {% for link in site.data.link %}
@@ -34,7 +36,9 @@ title: 前端资源
   </div>
 </p>
 
-  <h5>在线工具</h5>
+  <h5>在线工具
+    <a class="button" target="_blank" href="https://github.com/oft/oft.github.io/edit/main/_data/tool.yml">编辑</a>
+  </h5>
   <p>
   <div class="row">
   {% for group in site.data.tool %}
@@ -50,45 +54,30 @@ title: 前端资源
   </div>
 
 </p>
-  <!--table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-    </tbody>
-  </table-->
 
 
   <p>
-  <h3>Blogs</h3>
-  <div>
-      {% for post in site.posts %}
-      <a href="{{ site.baseurl }}{{ post.url }}" class="list-group-item list-group-item-action" aria-current="true">
-          {{ post.title }}
-      </a>
+  <h3>
+    文章
+  </h3>
+  <div class="list-group">
+    {% for post in site.posts %}
+    <a href="{{ site.baseurl }}{{ post.url }}" class="list-group-item list-group-item-action" aria-current="true">
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">{{ post.title }}</h5>
+        <small>{{ post.date | date:"%Y年%-m月%d日" }}</small>
+      </div>
+      <!--p class="mb-1">{{ post.excerpt }}</p-->
+      
+      {% for tag in post.tags %}
+      <small style="maring:auto 0.5rem;">{{tag}}</small>
       {% endfor %}
+    </a>
+    {% endfor %}
+    <div class="list-group-item d-flex justify-content-between align-items-start">
+      <a class="button" target="_blank" href="https://github.com/oft/oft.github.io/new/main/_posts">新增</a>
+    </div>
+    
   </div>
   </p>
 </main>
