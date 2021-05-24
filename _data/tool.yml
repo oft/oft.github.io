@@ -21,3 +21,7 @@
   children: 
   - url: https://275b0124-33d7-4411-b843-5b38156018e3.id.repl.co/
     title: ws示例
+- title: SVG
+  children: 
+  - url: https://yqnn.github.io/svg-path-editor/
+    title: Path 编辑器
