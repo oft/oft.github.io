@@ -14,16 +14,29 @@
         .flex-row{display:flex;flex-direction: row;}
         .flex-item{flex:1}
 
-        .header{padding:1rem;background-color: #0001;border-bottom:1px solid #ccc;}
-        .content {padding:0.5rem;font-size:12px;}
+        .header{font-size:12px;padding:0.2rem;background-color: #0001;border-bottom:1px solid #ccc;}
+        .content {padding:0rem;font-size:12px;}
+        .panel{margin:0.5rem;border:1px solid #ccc;border-radius: 5px;}
         .panel + .panel{
             border-left:1px solid #ccc;
         }
 
-        button{padding:rem;margin-bottom:0.5rem;}
+        button{
+            border-radius: 5px;;
+            padding:rem;margin-bottom:0.5rem;
+            color:#fff;
+            background-image: linear-gradient(to right,#666, #ffff);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            border:1px solid #fff;
+        }
+
+        textarea {resize:none;border:0;color:#fff;}
+
+        .padding-6{padding:6px;}
     </style>
 </head>
-<body>
+<body style="background-color: #000;color:#fffe;">
     <div id="app" class="flex flex-row">
         <div class="panel flex flex-item">
             <div class="header">数组</div>
@@ -31,9 +44,9 @@
                 <textarea disabled class="flex-item" :value="strarr"></textarea>
             </div>
         </div>
-        <div class="panel flex" style="width:250px;">
+        <div class="panel flex" style="width:250px;margin-left:0;margin-right:0;">
             <div class="header">操作(改变数组)</div>
-            <div class="content flex-item flex">
+            <div class="content flex-item flex padding-6">
                 添加到最后
                 <button @click="push({index:id++})">push({index:{{id}}})</button>
                 取出最后一个
@@ -56,8 +69,8 @@
                 <button @click="reverse()">reverse()</button>
             </div>
         </div>
-        <div class="panel flex flex-item">
-            <div class="panel flex flex-item">
+        <div class="flex flex-item">
+            <div class="panel flex flex-item" style="margin-bottom:0;">
                 <div class="header">返回</div>
                 <div class="content flex-item flex">
                     <textarea disabled class="flex-item" :value="strresult"></textarea>
