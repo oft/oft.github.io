@@ -31,5 +31,6 @@
     title: Path 编辑器
 
 - title: 游戏
+  children: 
   - url: https://zqzyz.com/lifeRestart/view/
     title: 游戏-人生重开模拟器
