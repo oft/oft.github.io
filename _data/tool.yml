@@ -3,29 +3,33 @@
   children:
   - title: github
     url: https://github.com
-- title: CDN
-  children:
   - url: https://www.jsdelivr.com
     title: jsdelivr
+
 - title: 代码转换
   children:
   - url: http://www.json2yaml.com
     title: json2yaml
+  - url: https://astexplorer.net/
+    title: AST 抽象语法树
+
 - title: WebDev
   children:
   - url: https://codesandbox.io
     title: codesandbox
   - url: https://replit.com
     title: replit
+
 - title: 基于 relite.com 的工具
   children: 
   - url: https://275b0124-33d7-4411-b843-5b38156018e3.id.repl.co/
     title: ws示例
+
 - title: SVG
   children: 
   - url: https://yqnn.github.io/svg-path-editor/
     title: Path 编辑器
-- title: SVG
-  children: 
-  - url: https://astexplorer.net/
-    title: AST 抽象语法树
+
+- title: 游戏
+  - url: https://zqzyz.com/lifeRestart/view/
+    title: 游戏-人生重开模拟器
