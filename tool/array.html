@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <style>
+        html,body,#app{
+            margin:0;
+            height:100%;
+        }
+        .flex{display:flex;flex-direction: column;}
+        .flex-row{display:flex;flex-direction: row;}
+        .flex-item{flex:1}
+
+        .header{font-size:12px;padding:0.2rem;background-color: #0001;border-bottom:1px solid #ccc;}
+        .content {padding:0rem;font-size:12px;}
+        .panel{margin:0.5rem;border:1px solid #ccc;border-radius: 5px;}
+        .panel + .panel{
+            border-left:1px solid #ccc;
+        }
+
+        button{
+            border-radius: 5px;;
+            padding:rem;margin-bottom:0.5rem;
+            color:#fff;
+            background-image: linear-gradient(to right,#666, #ffff);
+            -webkit-background-clip:text;
+            -webkit-text-fill-color:transparent;
+            border:1px solid #fff;
+        }
+
+        textarea {resize:none;border:0;color:#fff;}
+
+        .padding-6{padding:6px;}
+    </style>
+</head>
+<body style="background-color: #000;color:#fffe;">
+    <div id="app" class="flex flex-row">
+        <div class="panel flex flex-item">
+            <div class="header">数组</div>
+            <div class="content flex-item flex">
+                <textarea disabled class="flex-item" :value="strarr"></textarea>
+            </div>
+        </div>
+        <div class="panel flex" style="width:250px;margin-left:0;margin-right:0;">
+            <div class="header">操作(改变数组)</div>
+            <div class="content flex-item flex padding-6">
+                添加到最后
+                <button @click="push({index:id++})">push({index:{{id}}})</button>
+                取出最后一个
+                <button @click="pop()">pop()</button>
+                添加到前
+                <button @click="unshift({index:id++})">unshift({index:{{id}}})</button>
+                取出第一个
+                <button @click="shift()">shift()</button>
+                删除第2个|从第2个始取出1个
+                <button @click="splice(1,1)">splice(1,1)</button>
+                删除第2,3个|从第2个始取出2个
+                <button @click="splice(1,2)">splice(1,2)</button>
+                从第2个始取出2个并在第2个后插入1个
+                <button @click="splice(1,2,{index:id++})">splice(1,2,{index:{{id}}})</button>
+                从第2个始取出2个并在第2个后插入2个
+                <button @click="splice(1,2,{index:id++},{index:id++})">splice(1,2,{index:{{id}},{index:{{id+1}}})</button>
+                第2个与第3个位置互换
+                <button @click="splice(1,0,splice(2,1)[0])">splice(1,0,splice(2,1)[0])</button>
+                倒序
+                <button @click="reverse()">reverse()</button>
+            </div>
+        </div>
+        <div class="flex flex-item">
+            <div class="panel flex flex-item" style="margin-bottom:0;">
+                <div class="header">返回</div>
+                <div class="content flex-item flex">
+                    <textarea disabled class="flex-item" :value="strresult"></textarea>
+                </div>
+            </div>
+            <div class="panel flex flex-item">
+                <div class="header">日志</div>
+                <div class="content flex-item flex">
+                    <textarea disabled class="flex-item" :value="strlog"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module">
+        import {createApp} from "https://cdn.jsdelivr.net/npm/vue@3.1.1/dist/vue.esm-browser.js"
+    
+        createApp({
+            data(){
+                return {
+                    title:"333",
+                    id:1,
+                    list:[
+
+                    ],
+                    result:null,
+                    log:[]
+                }
+            },
+            computed:{
+                strarr(){
+                    return JSON.stringify(this.list,null,2)
+                },
+                strresult(){
+                    return this.toStr(this.result)
+                },
+                strlog(){
+                    return this.log.join("\n\n")
+                }
+            },
+            methods:{
+                reverse(...args){ this.log.unshift(`reverse(${args.map(this.toStr).join(",")})`);this.result = this.list.reverse(...args);return this.result; },
+                push(...args){ this.log.unshift(`splice(${args.map(this.toStr).join(",")})`);this.result = this.list.push(...args);return this.result; },
+                pop(...args){ this.log.unshift(`splice(${args.map(this.toStr).join(",")})`);this.result = this.list.pop(...args);return this.result; },
+                shift(...args){ this.log.unshift(`splice(${args.map(this.toStr).join(",")})`);this.result = this.list.shift(...args);return this.result; },
+                unshift(...args){ this.log.unshift(`splice(${args.map(this.toStr).join(",")})`);this.result = this.list.unshift(...args);return this.result; },
+                splice(...args){ this.log.unshift(`splice(${args.map(this.toStr).join(",")})`);this.result = this.list.splice(...args);return this.result; },
+                
+                slice(...args){ this.log.unshift(`slice(${args.map(this.toStr).join(",")})`);this.result = this.list.slice(...args);return this.result; },
+                
+                showLog(str){
+                    this.logpush(str);
+                },
+                toStr(a){
+                    if(typeof a === "object"){
+                        return JSON.stringify(a,null,2)
+                    }else if(a === null){
+                        return "null"
+                    }else if(a === undefined){
+                        return "undefined"
+                    }else{
+                        return String(a)
+                    }
+                }
+            }
+        }).mount("#app")
+    </script>
+</body>
+</html>
