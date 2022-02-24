@@ -21,6 +21,10 @@
     title: codesandbox
   - url: https://replit.com
     title: replit
+  - url: https://replit.com
+    title: replit
+  - url: https://codepen.io/zq1988626/full/MWOBwrR
+    title: css 渐变色编辑
 
 - title: 基于 relite.com 的工具
   children: 
