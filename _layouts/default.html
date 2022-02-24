@@ -55,6 +55,7 @@
       display: flex;
       align-content: center;
       align-items: center;
+      animation:move 30s linear infinite;
     }
 
     a{
@@ -90,6 +91,20 @@
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
       }
+    }
+
+    @keyframes move {
+      0% { background-position:0 0; }
+      10% { background-position:1000px 1000px; }
+      20% { background-position:2000px 1000px; }
+      30% { background-position:2000px 2000px; }
+      40% { background-position:1500px 500px; }
+      50% { background-position:200px 900px; }
+      60% { background-position:1800px 900px; }
+      70% { background-position:600px 1600px; }
+      80% { background-position:1500px 800px; }
+      90% { background-position:0px 600px; }
+      100% {  background-position:2000px 0; }
     }
   </style>
 
