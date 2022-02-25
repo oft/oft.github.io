@@ -21,10 +21,10 @@
     title: codesandbox
   - url: https://replit.com
     title: replit
-  - url: https://codesandbox.io/
-    title: codesandbox
-  - url: https://codepen.io/zq1988626/full/MWOBwrR
-    title: css 渐变色编辑
+  - url: https://observablehq.com/
+    title: observablehq
+  - url: https://stackblitz.com
+    title: stackblitz
 
 - title: 基于 relite.com 的工具
   children: 
@@ -35,6 +35,8 @@
   children: 
   - url: https://yqnn.github.io/svg-path-editor/
     title: Path 编辑器
+  - url: https://codepen.io/zq1988626/full/MWOBwrR
+    title: css 渐变色编辑
 
 - title: 游戏
   children: 
