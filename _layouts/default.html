@@ -45,7 +45,9 @@
       --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   }
 
-
+    .search-match-text{
+      font-weight: bold;
+    }
     html,body{
       height: 100%;
     }
@@ -53,6 +55,7 @@
       background:radial-gradient(circle,#002db3 ,#000000 90%,#000000 100%);
       color:#fff;
       display: flex;
+      flex-direction: column;
       align-content: center;
       align-items: center;
       animation:move 30s linear infinite;
@@ -117,16 +120,102 @@
       
     }
   </style>
+  <link rel="stylesheet" href="https://www.algolia.com/doc/assets/stylesheets/live-examples-602775f1.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css" integrity="sha256-t2ATOGCtAIZNnzER679jwcFcKYfLlw01gli6F6oszk8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.4.5/themes/satellite-min.css" integrity="sha256-TehzF/2QvNKhGQrrNpoOb2Ck4iGZ1J/DI4pkd2oUsBc=" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/algoliasearch@4.5.1/dist/algoliasearch-lite.umd.js" integrity="sha256-EXPXz4W6pQgfYY3yTpnDa3OH8/EPn16ciVsPQ/ypsjk=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.8.3/dist/instantsearch.production.min.js" integrity="sha256-LAGhRRdtVoD6RLo2qDQsU2mp+XVSciKRC8XPOBWmofM=" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@algolia/autocomplete-js@1.5.3/dist/umd/index.production.js"></script>
+  <script src="https://unpkg.com/preact@10.6.6/dist/preact.umd.js"></script>
+  <script src="https://unpkg.com/@algolia/autocomplete-plugin-query-suggestions@1.5.3/dist/umd/index.production.js"></script>
+  
+  <script>
+    const { autocomplete,getAlgoliaResults } = window['@algolia/autocomplete-js'];
+    const algoliasearch = window['algoliasearch'];
+    const { h, Fragment } = window['preact'];
+    const {createQuerySuggestionsPlugin } = window['@algolia/autocomplete-plugin-query-suggestions'];
+  </script>
 </head>
 
 <body>
-  
-  {{ content }}
+  <div id="autocomplete" style="display:none;"></div>
+  <div style="flex:1;display:flex;align-items: center;">
+    <div>
+      {{ content }}
+    </div>
+  </div>
   <!--   
   <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.js" integrity="sha256-T3nUjmQxnOjzHxjuh3cHG9MpgOURumsZOuLHDQTef9I=" crossorigin="anonymous"></script>
   -->
   <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.prod.js" integrity="sha256-2ndwnHC+N2Yt4HwOAdoyAb6R6u9Ddt+R3TBGij6U35Q=" crossorigin="anonymous"></script>
+  <script>
+    
+    
+    const searchClient = algoliasearch(
+      'OFBJT4MJL4',
+      '5c460679dc374aecbcc4dee28b2b5ac2'
+    );
 
+    const querySuggestionsPlugin = createQuerySuggestionsPlugin({
+      searchClient,
+      indexName: 'zqzyz.com',
+      getSearchParams({ state }) {
+        return { hitsPerPage: state.query ? 5 : 10 };
+      },
+      categoryAttribute: [
+        'instant_search',
+        'facets',
+        'exact_matches',
+        'categories',
+      ],
+      itemsWithCategories: 2,
+      categoriesPerItem: 2,
+    });
+
+    autocomplete({
+      container: '#autocomplete',
+      plugins: [querySuggestionsPlugin],
+      openOnFocus: true,
+    });
+
+    /*
+    autocomplete({
+      container: '#autocomplete',
+      placeholder: 'Search for products',
+      getSources({ query }) {
+        return [
+          {
+            sourceId: 'products',
+            getItems() {
+              return getAlgoliaResults({
+                searchClient,
+                queries: [
+                  {
+                    indexName: 'zqzyz.com',
+                    query,
+                    params: {
+                      hitsPerPage: 5,
+                    },
+                  },
+                ],
+              });
+            },
+            templates: {
+              item({ item, components }) {
+                let content = item._highlightResult.content.value
+                .replace(/__aa-highlight__/g,'<span class="search-match-text">')
+                .replace(/__\/aa-highlight__/g,'</span>')
+                let div = document.createElement('div')
+                div.innerHTML = content;
+                return div;
+              },
+            },
+          },
+        ];
+      },
+    });
+    */
+  </script>
 </body>
 
 </html>

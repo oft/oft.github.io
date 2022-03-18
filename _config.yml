@@ -30,7 +30,7 @@ gems:
 
 # host: 0.0.0.0
 
-baseurl: 
+baseurl: ''
 
 # 排除文件
 exclude: [
@@ -39,7 +39,9 @@ exclude: [
   "CNAME",
   "lib",
   "packages",
-  "README.md"
+  "bin",
+  "README.md",
+  "cd-express.json"
 ]
 
 include: [
@@ -53,4 +55,7 @@ include: [
 # source: src
 
 # 源码目录 默认：./_site
-# destination 
+# destination: ./docs
+
+# 为文章生成索引
+lsi: true

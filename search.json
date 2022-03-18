@@ -1,0 +1,82 @@
+[
+  {
+    "objectID": "404.html",
+    "path": "404.html",
+    "content": "404\n页面未找到 :(\n资源可能已被删除"
+  },
+  {
+    "objectID": "blog/2021/04/23/doc.html",
+    "path": "blog/2021/04/23/doc.html",
+    "content": "MD文档\n返回首页\n免费云数据库\n关于\n文档示例\n示例\n欢迎\nMD文档\n标题\n标题\n标题\n标题\n标题"
+  },
+  {
+    "objectID": "blog/2021/04/23/welcome-to-jekyll.html",
+    "path": "blog/2021/04/23/welcome-to-jekyll.html",
+    "content": "示例\nYou’ll find this post in your\n_posts\ndirectory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run\njekyll serve\n, which launches a web server and auto-regenerates your site when a file is updated.\nJekyll requires blog post files to be named according to the following format:\nYEAR-MONTH-DAY-title.MARKUP\nWhere\nYEAR\nis a four-digit number,\nMONTH\nand\nDAY\nare both two-digit numbers, and\nMARKUP\nis the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.\nJekyll also offers powerful support for code snippets:\ndef\nprint_hi\n(\nname\n)\nputs\n\"Hi,\n#{\nname\n}\n\"\nend\nprint_hi\n(\n'Tom'\n)\n#=\n>\nprints 'Hi, Tom' to STDOUT.\nCheck out the\nJekyll docs\nfor more info on how to get the most out of Jekyll. File all bugs/feature requests at\nJekyll’s GitHub repo\n. If you have questions, you can ask them on\nJekyll Talk\n."
+  },
+  {
+    "objectID": "blog/2021/04/23/你好.html",
+    "path": "blog/2021/04/23/你好.html",
+    "content": "欢迎\n欢迎"
+  },
+  {
+    "objectID": "blog/2021/04/23/工具.html",
+    "path": "blog/2021/04/23/工具.html",
+    "content": "文档示例\n返回首页\n免费云数据库\n关于\n文档示例\n示例\n欢迎\nMD文档\nJS 数组操作"
+  },
+  {
+    "objectID": "blog/2021/04/29/关于.html",
+    "path": "blog/2021/04/29/关于.html",
+    "content": "关于\n关于\n本站以下项目开发\ngithub.com\ngit 仓库\ngit pages 静态页面\njykell\nbootstrap\njsDelivr CDN"
+  },
+  {
+    "objectID": "blog/2021/06/11/免费云数据库.html",
+    "path": "blog/2021/06/11/免费云数据库.html",
+    "content": "使用 Netlify + Fauna DB 搭建一个 Web 应用\nUsing FaunaDB\n&\nNetlify functions\n示例"
+  },
+  {
+    "objectID": "index.html",
+    "path": "index.html",
+    "content": "前端资源\n编辑\nhttp://jekyllcn.com\nhttp://draw.io\nhttps://observablehq.com/\nhttps://cnxzq.github.io/\nhttps://ezq.gitee.io/\nhttps://camo.githubusercontent.com\nhttps://hub.fastgit.org\nhttps://dev.to\nhttps://webgems.io\nhttps://flow.org\nhttps://codepen.io/\nhttps://replit.com/\nhttps://caniuse.com/\nhttp://json-schema.org/\n编辑\ngithub\njsdelivr\njson2yaml\nAST 抽象语法树\nwoff2 转 base64\ncodesandbox\nreplit\nobservablehq\nstackblitz\nws示例\nPath 编辑器\ncss 渐变色编辑\n游戏-人生重开模拟器\n新增\n免费云数据库 2021年6月11日\n关于 2021年4月29日\n文档示例 2021年4月23日\n    \n    \n    XXX\n    \n    BBB\n示例 2021年4月23日\n欢迎 2021年4月23日\nMD文档 2021年4月23日\n    \n    \n    XXX\n    \n    BBB\n© zqzyz.com"
+  },
+  {
+    "objectID": "jh.html",
+    "path": "jh.html",
+    "content": "前端资源\nhttp://jekyllcn.com\nhttp://draw.io\nhttps://observablehq.com/\nhttps://cnxzq.github.io/\nhttps://ezq.gitee.io/\nhttps://camo.githubusercontent.com\nhttps://hub.fastgit.org\nhttps://dev.to\nhttps://webgems.io\nhttps://flow.org\nhttps://codepen.io/\nhttps://replit.com/\nhttps://caniuse.com/\nhttp://json-schema.org/"
+  },
+  {
+    "objectID": "pages/db/index.html",
+    "path": "pages/db/index.html",
+    "content": "db"
+  },
+  {
+    "objectID": "pages/npmreport/index.html",
+    "path": "pages/npmreport/index.html",
+    "content": "npm包分析器\nnpm包分析器"
+  },
+  {
+    "objectID": "tool/array.html",
+    "path": "tool/array.html",
+    "content": "Array\n数组\n操作(改变数组)\n添加到最后\npush({index:{{id}}})\n取出最后一个\npop()\n添加到前\nunshift({index:{{id}}})\n取出第一个\nshift()\n删除第2个|从第2个始取出1个\nsplice(1,1)\n删除第2,3个|从第2个始取出2个\nsplice(1,2)\n从第2个始取出2个并在第2个后插入1个\nsplice(1,2,{index:{{id}}})\n从第2个始取出2个并在第2个后插入2个\nsplice(1,2,{index:{{id}},{index:{{id+1}}})\n第2个与第3个位置互换\nsplice(1,0,splice(2,1)[0])\n倒序\nreverse()\n返回\n日志"
+  },
+  {
+    "objectID": "tool/data.html",
+    "path": "tool/data.html",
+    "content": "标题"
+  },
+  {
+    "objectID": "tool/data2.html",
+    "path": "tool/data2.html",
+    "content": "标题"
+  },
+  {
+    "objectID": "tool/index.html",
+    "path": "tool/index.html",
+    "content": "Document\njavascript\nArray"
+  },
+  {
+    "objectID": "tool/npm.html",
+    "path": "tool/npm.html",
+    "content": ""
+  }
+]
