@@ -8,5 +8,11 @@
   "scripts": {
     "push": "git add . && git commit -m 'update' && git push",
     "start": "jekyll serve"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "algoliasearch": "^4.13.0",
+    "glob": "^7.2.0",
+    "htmlparser2": "^7.2.0"
   }
 }

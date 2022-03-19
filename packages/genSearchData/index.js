@@ -4,7 +4,7 @@ const fs = require('fs');
 const htmlparser2 = require("htmlparser2");
 const algoliasearch = require('algoliasearch/lite');
 const root = path.join(__dirname, '../../');
-const out = path.join(root, 'search.json');
+const out = path.join(root, '../../search.json');
 const site = path.join(root, '_site');
 // options is optional
 glob('**/*.html', {
