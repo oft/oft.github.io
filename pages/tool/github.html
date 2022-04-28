@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>github 镜像</title>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.css">
+</head>
+<body>
+    <div id="app" class="hidden flex flex-col p-2 w-screen h-screen">
+        <div class="flex">
+            github/npm：<input class="flex-auto border-2 border-black border-solid" v-model="git" />
+        </div>
+        <div v-if="type==='github'">
+            <div>
+                user：{{this.user}}
+            </div>
+            <div>
+                repoName：{{this.repo}}
+            </div>
+            <div>
+                镜像仓库：<a class="underline text-blue-900 " :href="fast">{{fast}}</a>
+            </div>
+            <div>
+                CDN：<a class="underline text-blue-900 " target="_blank" :href="`https://cdn.jsdelivr.net/gh/${user}/${repo}/`">
+                    {{`https://cdn.jsdelivr.net/gh/${user}/${repo}/`}}
+                </a>
+            </div>
+        </div>
+        <div v-if="type==='npm' && packageJson">
+            <div v-if="repositoryUrl">
+                github：<a class="underline text-blue-900 "
+                :href="'#'+repositoryUrl">
+                    {{repositoryUrl}}
+                </a>
+            </div>
+        </div>
+        <div>
+            package.json:
+        </div>
+        <iframe v-if="type==='github'" class="flex-1" :src="pkgurl" frameborder="0"></iframe>
+        <textarea class="bg-black text-white flex-1" v-else-if="type==='npm'" :value="packageJsonStr"></textarea>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+        let app = Vue.createApp({
+            data(){
+                return {
+                    git:window.location.hash.replace('#','')||"https://github.com/shoelace-style/vue-sl-model.git",
+                    packageJson:{},
+                    loading:false
+                }
+            },
+            computed:{
+                repositoryUrl(){
+                    if(typeof this.packageJson.repository === 'string'){
+                        return this.packageJson.repository
+                    }else if(typeof this.packageJson.repository === 'object'){
+                        return this.packageJson.repository.url
+                    }
+                    return ''
+                },
+                packageJsonStr(){
+                    return JSON.stringify(this.packageJson,null,2)
+                },
+                type(){
+                    if(this.git.indexOf('github.com')>-1){
+                        return 'github'
+                    } else {
+                        return 'npm'
+                    }
+                },
+                fast(){
+                    return this.git.replace('https://github.com','https://github.com')
+                },
+                setting(){
+                    return opt(this.git)
+                },
+                user(){
+                    return this.setting.user;
+                },
+                repo(){
+                    return this.setting.repo;
+                },
+                pkgurl(){
+                    if(this.type==='github'){
+                        return gbToJd(this.git)+'package.json';
+                    }{
+                        return 'https://unpkg.com/'+this.git+'/package.json';
+                    }
+                }
+            },
+            watch:{
+                git:'updatePackageJson'
+            },
+            mounted(){
+                this.updatePackageJson()
+                this.updatePackageJson = debounce(this.updatePackageJson,1000)
+            },
+            methods:{
+                updatePackageJson(){
+                    let my_query_txt = this._query_txt = Math.random();
+                    this.queryJson()
+                    .then(json=>{
+                        if(my_query_txt!==this._query_txt){
+                            // 失效请求;
+                            return
+                        }
+                        this.packageJson = json;
+                    })
+                    .catch(()=>'无 package.json')
+                },
+                queryJson(){
+                    if(this.type==='github'){
+                        return queryGithubPackage(this.git)
+                    }else{
+                        return queryUnpkgJson(this.git)
+                    }
+                }
+            }
+        });
+        app.mount('#app');
+        app._container.classList.remove('hidden');
+        
+        function updateVmByHashChange(){
+            app._instance.data.git = window.location.hash.replace('#','');
+        }
+
+        window.addEventListener('hashchange',updateVmByHashChange)
+
+        function opt(url){
+            if(!url){return {
+                user:'',
+                repo:'',
+                branch:''
+            }}
+            let arr = url.split("/").slice(3);
+            return {
+                user:arr[0]||'',
+                repo:(arr[1]||'').replace('.git',''),
+                branch:arr[2]||''
+            }
+        }
+        function gbToJd(url){
+            let o = opt(url);
+            if(!o.repo) return Promise.reject('参数错误');
+            return `https://cdn.jsdelivr.net/gh/${o.user}/${o.repo}/`
+        }
+        function queryGithubPackage(url){
+            return fetch(gbToJd(url)+'package.json')
+            .then(d=>d.json());
+        }
+        function queryUnpkgJson(name,version){
+            let n = name;
+            if(version){n+='@'+version}
+            return fetch(`https://unpkg.com/${n}/package.json`)
+            .then(d=>d.json());
+        }
+
+        function debounce(func, wait, immediate) {
+            var timeout;
+            return function() {
+                var context = this, args = arguments;
+                var later = function() {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+                var callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
+            };
+        }
+
+        
+        // window.addEventListener('hashchange', onHashChangeHandle)
+    </script>
+</body>
+</html>
