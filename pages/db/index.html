@@ -7,7 +7,11 @@
     <title>db</title>
 </head>
 <body>
-    
+    <script>
+        fetch('https://db.zqzyz.com/.netlify/functions/todos-read-all')
+        .then(d=>d.json())
+        .then(console.log('2222'));
+    </script>
     <script src="//cdn.jsdelivr.net/npm/faunadb@latest/dist/faunadb.js"></script>
 </body>
 </html>
