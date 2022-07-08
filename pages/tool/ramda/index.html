@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标题</title>
+    <link rel="stylesheet" href="./windi.css">
+</head>
+<body>
+    <div id="app" class="h-screen flex flex-col">
+        <div>
+            <h1 class="leading-8 p-2 border-b-black border-2">Ramda</h1>
+        </div>
+        <div class="flex flex-row flex-auto">
+            <div class="w-1/2  border-r-black border-2">
+                <textarea class="h-full w-full p-1 focus-visible:border-0"></textarea>
+            </div>
+            <div class="flex-1">
+                <div>
+                    <div>结果</div>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/ramda"></script>
+    <script>
+        const __R = R;
+
+        function argStringify(args){
+            const rev = [];
+            args.forEach((arg)=>{
+                if(['string','number'].includes(typeof arg)){
+                    rev.push(JSON.stringify(arg))
+                }else if(typeof arg==='function'){
+                    rev.push(`Function:${arg.fnName||''}`)
+                }else{
+                    rev.push(arg);
+                }
+                rev.push(',');
+            })
+            rev.splice(-1)
+            return rev;
+        }
+
+        function wrapper(fn,name,args=[],first){
+            if(typeof fn==='function'){
+                let revfn = function(...args2){
+                    const result = fn.call(this,...args2);
+                    if(revfn.argCount<= args.length+args2.length){
+                        console.log(name,'(',...argStringify([...args,...args2]),')'+' => ',result);
+                    }else{
+                        args.push(...args2)
+                    }
+                    return wrapper(result,name,args);
+                }
+                revfn.fnName = name;
+                revfn.argCount = fn.length;
+                return revfn;
+            } else {
+                return fn;
+            }
+        }
+
+        function createDebugger(target){
+            return new Proxy(target,{
+                get(target, property, receiver){
+                    const rev = Reflect.get(target, property, receiver);
+                    return wrapper(rev,property,[],true);
+                }
+            })
+        }
+
+        R = createDebugger(R);
+
+        R.map(R.prop('a'),[
+            {a:1},
+            {b:2}
+        ])
+
+        let api = {
+            getA(){
+                return '1'
+            },
+            getB(){
+                return this.getA()+1;
+            }
+        }
+
+        api = createDebugger(api);
+        api.getB('33');
+    </script>
+</body>
+</html>
