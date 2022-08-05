@@ -44,3 +44,8 @@
   children: 
   - url: https://zqzyz.com/lifeRestart/view/
     title: 游戏-人生重开模拟器
+    
+- title: 文章
+  children:
+  - url: https://12factor.net/zh_cn/
+    title: 应用程序十二要素
