@@ -6,6 +6,7 @@
   "author": "xczq <290353142@qq.com>",
   "license": "MIT",
   "scripts": {
+    "css":"tailwindcss -c ./tailwind.config.js -i input.css -o output.css --watch",
     "push": "git add . && git commit -m 'update' && git push",
     "start": "jekyll serve"
   }
