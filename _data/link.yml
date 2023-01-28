@@ -1,24 +1,47 @@
 ---
-- https://www.figma.com/
-- http://jekyllcn.com
-- http://draw.io
-- https://crowdin.com/
-- https://observablehq.com/
-- https://cnxzq.github.io/
-- https://ezq.gitee.io/
-- https://camo.githubusercontent.com
-- https://hub.fastgit.org
-- https://dev.to
-- https://webgems.io
-- https://flow.org
-- https://codepen.io/
-- https://replit.com/
-- https://caniuse.com/
-- http://json-schema.org/
-- https://shoelace.style
-- https://ionicframework.com
-- https://opensource.adobe.com/spectrum-web-components
-- https://open-ui.org/components/
-- https://developer.mozilla.org/zh-CN/docs/Web/HTML
-- https://developers.google.com/web/fundamentals/web-components/best-practices
-- https://docs.microsoft.com/zh-cn/windows/apps/design/
+- url: http://jekyllcn.com
+  title: jekyll
+- url: http://draw.io
+  title: drawio
+- url: https://crowdin.com/
+  title: crowdin
+- url: https://observablehq.com/
+  title: observablehq
+- url: https://cnxzq.github.io/
+  title: cnxzq.github.io
+- url: https://ezq.gitee.io/
+  title: ezq.gitee.io
+- url: https://camo.githubusercontent.com
+  title: camo.githubusercontent.com
+- url: https://hub.fastgit.org
+  title: hub.fastgit.org
+- url: https://dev.to
+  title: dev.io
+- url: https://webgems.io
+  title: webgems.io
+- url: https://flow.org
+  title: flow.org
+- url: https://codepen.io/
+  title: codepen
+- url: https://replit.com/
+  title: replit
+- url: https://caniuse.com/
+  title: caniuse
+- url: http://json-schema.org/
+  title: json-schema
+- url: https://shoelace.style
+  title: shoelace.style
+- url: https://ionicframework.com
+  title: ionicframework
+- url: https://opensource.adobe.com/spectrum-web-components
+  title: opensource.adobe.com
+- url: https://open-ui.org/components/
+  title: open-ui.org
+- url: https://developer.mozilla.org/zh-CN/docs/Web/HTML
+  title: developer.mozilla.org
+- url: https://developers.google.com/web/fundamentals/web-components/best-practices
+  title: developers.google.com
+- url: https://docs.microsoft.com/zh-cn/windows/apps/design/
+  title: docs.microsoft.com
+- url: https://12factor.net/zh_cn/
+  title: 应用程序十二要素

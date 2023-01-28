@@ -28,7 +28,7 @@
   - url: https://stackblitz.com
     title: stackblitz
 
-- title: 基于 relite.com 的工具
+- title: 基于 repl.it 的工具
   children: 
   - url: https://275b0124-33d7-4411-b843-5b38156018e3.id.repl.co/
     title: ws示例
@@ -44,8 +44,8 @@
   children: 
   - url: https://zqzyz.com/lifeRestart/view/
     title: 游戏-人生重开模拟器
-    
-- title: 文章
-  children:
-  - url: https://12factor.net/zh_cn/
-    title: 应用程序十二要素
+
+- title: 设计
+  children: 
+  - url: https://www.figma.com/
+    title: UI设计figma

@@ -59,3 +59,4 @@ include: [
 
 # 为文章生成索引
 lsi: true
+# paginate: 3

@@ -26,52 +26,103 @@ title: 前端资源
       background-position-x: 500%;
     }
   }
+
+  .edit{
+    font-size: 0.5rem;
+  }
+
+  .tag{
+    opacity: 0.6;
+    font-size: 0.5rem;
+  }
 </style>
 
-<div id="app" class="container">
-  <div class="input-group mb-3">
-    <span class="input-group-text" id="basic-addon1">
-      <i class="bi bi-search"></i>
-    </span>
-    <input v-model="search" id="txtSearch" type="text" class="form-control" 
-    placeholder="search text" aria-label="search text" aria-describedby="basic-addon1">
-  </div>
-  <a class="button" target="_blank" href="https://github.com/oft/oft.github.io/edit/main/_data/link.yml">编辑</a>
+<div id="app" class="container mx-auto">
+  <p class="flex">
+    <input v-model="search" id="txtSearch" type="text" 
+    class="border px-2 py-1 flex-1" 
+    placeholder="筛选">
+  </p>
   
-  {% for link in site.data.link %}
-  <a href="{{link}}" class="link-item" :class="{filtered:checkText('{{link}}')}" target="_blank">
-    {{ link }}
-  </a>
-  {% endfor %}
-  
-  <br>
-  <a class="button" target="_blank" href="https://github.com/oft/oft.github.io/edit/main/_data/tool.yml">编辑</a>
-  {% for group in site.data.tool %}
-    {% for link in group.children %}
-    <a href="{{link.url}}" :class="{filtered:checkTool({url:'{{link.url}}',title:'{{link.title}}'})}" target="_blank" aria-current="true">
-      {{ link.title }}
+  <h4>
+    文档
+    <a class="edit button" target="_blank" href="https://github.com/oft/oft.github.io/edit/main/_data/link.yml">编辑</a>
+  </h4>
+
+  <p class="flex gap-2 flex-wrap">
+    {% for item in site.data.link %}
+    <a href="{{item.url | item}}" class="item-link" :class="{filtered:checkText('{{item.url}}')}" target="_blank">
+      {% if item.title %}
+        {{ item.title }}
+      {% elsif item.url %}
+        {{ item.url }}
+      {% else %}
+        {{ item }}
+      {% endif %}
     </a>
     {% endfor %}
-  {% endfor %}
-  
-  
-  <br>
-  <a class="button" target="_blank" href="https://github.com/oft/oft.github.io/new/main/_posts">新增</a>
-  {% for post in site.posts %}
-  <a href="{{ site.baseurl }}{{ post.url }}">
-    {{ post.title }} {{ post.date | date:"%Y年%-m月%d日" }}
-    
-    {% for tag in post.tags %}
-    {{tag}}
-    {% endfor %}
-  </a>
-  {% endfor %}
+  </p>
 
-  <br>
-  <label>其他：</label>
-  <a class="button" href="pages/tool/array">数组操作</a>
-  <a class="button" href="pages/tool/github">github 镜像</a>
-  <a class="button" href="pages/school/cfkj">打印乘法口诀</a>
+  <h4>
+    工具
+    <a class="button edit" target="_blank" href="https://github.com/oft/oft.github.io/edit/main/_data/tool.yml">编辑</a>
+  </h4>
+
+  <div class="flex gap-2 flex-wrap">
+    {% for group in site.data.tool %}
+      <div class="border">
+        <div class="p-1">
+          {{group.title}}
+        </div>
+        <div>
+          {% for link in group.children %}
+          <a href="{{link.url}}" 
+            class="item-link"
+            :class="{filtered:checkTool({url:'{{link.url}}',title:'{{link.title}}'})}" 
+            target="_blank" aria-current="true">
+            {% if link.title %}
+              {{ link.title }}
+            {% elsif item.url %}
+              {{ link.url }}
+            {% else %}
+              {{ link }}
+            {% endif %}
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  
+  
+  <h4>
+    blog
+    <a class="button edit" target="_blank" href="https://github.com/oft/oft.github.io/new/main/_posts">新增</a>
+  </h4>
+
+  <p class="flex gap-2 flex-wrap">
+    {% for post in site.posts %}
+    <a href="{{ site.baseurl }}{{ post.url }}" class="item-link">
+      {{ post.title }} 
+      <!-- {{ post.date | date:"%Y年%-m月%d日" }} -->
+      
+      <!-- {% for tag in post.tags %}
+        <span class="tag">{{tag}}</span>
+      {% endfor %} -->
+    </a>
+    {% endfor %}
+  </p>
+
+  <div>{{ paginator.page }}</div>
+
+  <h4>
+    其他
+  </h4>
+  <p class="flex gap-2 flex-wrap">
+    <a class="button item-link" href="pages/tool/array">数组操作</a>
+    <a class="button item-link" href="pages/tool/github">github 镜像</a>
+    <!-- <a class="button" href="pages/school/cfkj">打印乘法口诀</a> -->
+  </p>
 
   <div class="copyright" style="text-align:right;">© zqzyz.com</div>
 
