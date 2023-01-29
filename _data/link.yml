@@ -43,5 +43,7 @@
   title: developers.google.com
 - url: https://docs.microsoft.com/zh-cn/windows/apps/design/
   title: docs.microsoft.com
+- url: https://www.openapis.org/
+  title: openapi
 - url: https://12factor.net/zh_cn/
   title: 应用程序十二要素
