@@ -32,6 +32,8 @@
   children: 
   - url: https://275b0124-33d7-4411-b843-5b38156018e3.id.repl.co/
     title: ws示例
+  - url: https://mock.cnxzq.repl.co/
+    title: webapi模拟服务
 
 - title: SVG
   children: 
