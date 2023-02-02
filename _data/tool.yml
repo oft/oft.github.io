@@ -42,17 +42,12 @@
   - url: https://codepen.io/zq1988626/full/MWOBwrR
     title: css 渐变色编辑
 
-- title: 游戏
-  children: 
-  - url: https://zqzyz.com/lifeRestart/view/
-    title: 游戏-人生重开模拟器
-
 - title: 设计
   children: 
   - url: https://www.figma.com/
     title: UI设计figma
 
 - title: 系统工具
-  chilrend:
+  children:
   - url: https://massgrave.dev/
     title: windows 激活
