@@ -45,5 +45,7 @@
   title: docs.microsoft.com
 - url: https://www.openapis.org/
   title: openapi
+- url: https://kubernetes.io/zh-cn/docs/home/
+  title: kubernetes
 - url: https://12factor.net/zh_cn/
   title: 应用程序十二要素
