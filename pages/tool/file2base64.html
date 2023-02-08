@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文件转BASE64</title>
+    <style>
+        :root{ color-scheme: dark light; }
+    </style>
+</head>
+<body>
+    <h1>图片、文件 转base64</h1>
+    <input type="file" name="" id="inpFile" 
+    placeholder="将图片拖到这里"
+    style="border:1px solid">
+    <button id="btn">下载文本</button>
+    <div>
+        文件类型:<span id="metaType"></span>
+        &nbsp;
+        预览文本:<span id="rawText"></span>
+    </div>
+    <img id="viewer">
+    <script>
+        const inp = document.getElementById('inpFile')
+        const viewer = document.getElementById('viewer')
+        const btn = document.getElementById('btn')
+        const metaType = document.getElementById('metaType')
+        const rawText = document.getElementById('rawText')
+        let txt = ''
+
+        inp.addEventListener('change',(e)=>{
+            rawText.innerText = '';
+            txt = '';
+            var file = e.target.files[0];
+                metaType.innerText=file.type;
+            var reader = new  FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function (ev) {
+                txt = ev.target.result||'未读到';
+                rawText.innerText = txt.slice(0,50);
+                
+                if((/^image\//).test(file.type)){
+                    viewer.setAttribute('src',ev.target.result);
+                }else{
+                    viewer.setAttribute('src','');
+                }
+            }
+        })
+        
+
+        btn.addEventListener('click',e=>{
+            if(!txt){
+                alert('请先上传文件')
+            }
+            downloadText(
+                txt,
+                inp.files[0].name+'.base64.txt'
+            );
+        })
+
+        
+        function downloadUrl(url,filename){
+            filename = filename || createFileName(url)
+            const link = document.createElement('a')
+            // link.target="_blank"
+            link.style.display = 'none'
+            link.href = url
+            link.download = filename
+            document.body.appendChild(link)
+            link.click()
+            // 释放的 URL 对象以及移除 a 标签
+            URL.revokeObjectURL(link.href)
+            document.body.removeChild(link)
+        }
+
+        function downloadBlob(blob,filename){
+            downloadUrl(URL.createObjectURL(blob),filename)
+        }
+
+        function downloadText(str,filename){
+            const blob = new Blob([str], {
+                type: 'text/plain'
+            });
+            downloadBlob(blob,filename);
+        }
+    </script>
+</body>
+</html>
