@@ -53,3 +53,8 @@
     title: windows 激活
   - url: https://otp.landian.vip/zh-cn/
     title: office
+
+- title: video
+  children: 
+  - url: https://obsproject.com/
+    title: 视频直播
