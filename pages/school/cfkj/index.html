@@ -1,15 +1,77 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>乘法口诀</title>
-    <script type="module" crossorigin src="./assets/index.9a113c98.js"></script>
-    <link rel="stylesheet" href="./assets/index.9f38f3fb.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    
-  </body>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>标题</title>
+    <style>
+        :root{
+            height: 100%;
+            --border-width:0.5mm
+        }
+        
+        body{margin:0;height: 100%;}
+        #app{height: 100%; box-sizing: border-box;}
+    </style>
+    <script type="importmap">
+        {
+          "imports": {
+            "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+          }
+        }
+    </script>
+</head>
+<body>
+    <div id="app" style="display: flex; justify-content: center; align-items: stretch; padding:1cm;">
+        <div style=" flex:1; display: flex; 
+        justify-content: center; align-items: stretch; padding:var(--border-width);">
+            <div style="flex:1; display: grid;
+            border-left:var(--border-width) solid #000;
+            border-bottom:var(--border-width) solid #000;
+            grid-template-columns: repeat(9,minmax(0,1fr));">
+                <template v-for="row in 9">
+                    <template v-for="col in 9">
+                        <div v-if="row>=col" style="display: flex;
+                        flex-direction: column;
+                        border-top:var(--border-width) solid #000;
+                        border-right:var(--border-width) solid #000;
+                        background-color: #fff;
+                        align-items: center;
+                        justify-content: center;" :style="{
+                            backgroundColor:row%2===1?'#ccc':'#fff'
+                        }">
+                            <div>
+                                <span style="letter-spacing: 2px;">{{col}}x{{row}}=</span>{{col*row}}</div>
+                            <div style="letter-spacing: 2px;">{{textMap[col-1]}}{{textMap[row-1]}}{{toText(col*row)}}</div>
+                        </div>
+                        <div v-else></div>
+                    </template>
+                </template>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        import {createApp} from 'vue'
+        createApp({
+            setup(){
+                const textMap = '一二三四五六七八九'.split('')
+                return {
+                    textMap:textMap,
+                    toText:(s)=>{
+                        if(s<10){
+                            return '得'+textMap[s-1]
+                        }else{
+                            const y = s%10
+                            const zs = (s-y)/10;
+                            const zstxt = textMap[zs-1]+'十'
+                            return zstxt + (y===0?'':textMap[y-1])
+                        }
+                    }
+                }
+            }
+        }).mount(document.querySelector('#app'))
+    </script>
+</body>
 </html>
