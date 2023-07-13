@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-cn" class="usedark">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>标题</title>
     <style>
-        .usedark:root{color-scheme: dark light;}
         :root{
+            color-scheme: dark light;
             height: 100%;
             --border-width:2pt;
             --bg-color:#fff;
@@ -15,7 +15,7 @@
         }
 
         @media (prefers-color-scheme: dark) {
-            .usedark:root {
+            :root {
                 --bg-color:#000;
                 --bg-color2:#333;
             }
