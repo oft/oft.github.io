@@ -1,14 +1,24 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-cn" class="">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>标题</title>
     <style>
+        .usedark:root{color-scheme: dark light;}
         :root{
             height: 100%;
-            --border-width:2pt
+            --border-width:2pt;
+            --bg-color:#fff;
+            --bg-color2:#ccc;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .usedark:root {
+                --bg-color:#000;
+                --bg-color2:#333;
+            }
         }
         
         body{margin:0;height: 100%;}
@@ -23,7 +33,7 @@
     </script>
 </head>
 <body>
-    <div id="app" style="display: flex; justify-content: center; align-items: stretch; padding:16pt;">
+    <div id="app" style="display: flex; justify-content: center; align-items: stretch; padding:32pt;">
         <div style=" flex:1; display: flex; 
         justify-content: center; align-items: stretch; padding:var(--border-width);">
             <div style="flex:1; display: grid;
@@ -36,10 +46,10 @@
                         flex-direction: column;
                         border-top:var(--border-width) solid #000;
                         border-right:var(--border-width) solid #000;
-                        background-color: #fff;
+                        background-color: var(--bg-color);
                         align-items: center;
                         justify-content: center;" :style="{
-                            backgroundColor:row%2===1?'#ccc':'#fff'
+                            backgroundColor:row%2===1?'var(--bg-color2)':'var(--bg-color)'
                         }">
                             <div>
                                 <span style="letter-spacing: 2px;">{{col}}x{{row}}=</span>{{col*row}}</div>
