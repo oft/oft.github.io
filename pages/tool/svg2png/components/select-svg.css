@@ -1,0 +1,130 @@
+.svg-uploader {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.svg-uploader.is-dragover {
+    border-color: #409eff;
+    background-color: #f0f8ff;
+}
+
+.file-input {
+    display: none;
+}
+
+.upload-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+}
+
+.preview-svg {
+    /* 1. 让容器占满父元素宽度（或自定义宽度） */
+    width: 100%;
+    /* 2. 固定高度或自适应高度 */
+    height: 400px; /* 或用min-height: 300px */
+    
+    /* 3. Flex布局实现SVG水平+垂直居中 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* 可选：加背景/边框便于观察 */
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+.preview-svg svg {
+  /* 1. 限制最大尺寸，防止溢出容器 */
+  max-width: 100%;
+  max-height: 100%;
+  
+  /* 2. 保持SVG宽高比（关键） */
+  width: auto !important;
+  height: auto !important;
+  
+  /* 3. 可选：控制SVG缩放规则（默认meet，可根据需求调整） */
+  preserveAspectRatio: xMidYMid meet; 
+}
+
+
+.upload-placeholder {
+    color: #666;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.error-text {
+    margin-top: 1rem;
+    color: #f56c6c;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* 基础棋盘格样式（复用class） */
+.grid-bg {
+  background-repeat: repeat;
+  min-height: 150px;
+  width: 100%;
+}
+
+/* 系统浅色主题（默认） */
+@media (prefers-color-scheme: light) {
+  .grid-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect width='10' height='10' fill='%23ffffff'/%3E%3Crect x='10' y='0' width='10' height='10' fill='%23f0f0f0'/%3E%3Crect x='0' y='10' width='10' height='10' fill='%23f0f0f0'/%3E%3Crect x='10' y='10' width='10' height='10' fill='%23ffffff'/%3E%3C/svg%3E");
+    background-color: #ffffff;
+  }
+}
+
+/* 系统深色主题 */
+@media (prefers-color-scheme: dark) {
+  .grid-bg {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20'%3E%3Crect width='10' height='10' fill='%23000000'/%3E%3Crect x='10' y='0' width='10' height='10' fill='%23333333'/%3E%3Crect x='0' y='10' width='10' height='10' fill='%23333333'/%3E%3Crect x='10' y='10' width='10' height='10' fill='%23000000'/%3E%3C/svg%3E");
+    background-color: #000000;
+  }
+}
+
+/* 大网格版本（20px网格） */
+.grid-bg-large {
+    background-image:
+        linear-gradient(45deg, #e0e0e0 25%, transparent 25%),
+        linear-gradient(135deg, #e0e0e0 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #e0e0e0 75%),
+        linear-gradient(135deg, transparent 75%, #e0e0e0 75%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 0, 20px -20px, 0px 20px;
+    background-color: #f9f9f9;
+}
+
+/* 深色主题网格 */
+.grid-bg-dark {
+    background-image:
+        linear-gradient(45deg, #333 25%, transparent 25%),
+        linear-gradient(135deg, #333 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #333 75%),
+        linear-gradient(135deg, transparent 75%, #333 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
+    background-color: #1a1a1a;
+}
+
+/* 圆角+阴影版本（用于预览容器） */
+.svg-preview-container {
+    background-image:
+        linear-gradient(45deg, rgba(230, 230, 230, 0.5) 25%, transparent 25%),
+        linear-gradient(135deg, rgba(230, 230, 230, 0.5) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(230, 230, 230, 0.5) 75%),
+        linear-gradient(135deg, transparent 75%, rgba(230, 230, 230, 0.5) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 0, 10px -10px, 0px 10px;
+    background-color: #ffffff;
+
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}

@@ -41,6 +41,8 @@
     title: Path 编辑器
   - url: https://codepen.io/zq1988626/full/MWOBwrR
     title: css 渐变色编辑
+  - url: /pages/tool/svg2png/index.html
+    title: SVG转png
 
 - title: 设计
   children: 
