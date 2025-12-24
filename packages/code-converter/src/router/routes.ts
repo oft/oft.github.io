@@ -1,0 +1,11 @@
+import type { RouteRecordRaw } from "vue-router";
+
+export const routes:RouteRecordRaw[] = [
+    {
+        path:'/',
+        component:()=>import('@/views/Home.vue'),
+        meta:{
+            title:'首页'
+        }
+    }
+]
