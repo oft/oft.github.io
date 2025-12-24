@@ -27,6 +27,8 @@
     title: observablehq
   - url: https://stackblitz.com
     title: stackblitz
+  - url: https://codepen.io
+    title: codepen
 
 - title: 基于 repl.it 的工具
   children: 
